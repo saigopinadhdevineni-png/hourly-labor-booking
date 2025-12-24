@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hourly Labor Booking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <h1>Hourly Labor Booking</h1>
+        <p class="sub">Find workers • Book instantly • Pay hourly (demo)</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="btnSeed" class="btn ghost" type="button">Reset Demo Data</button>
+      <a class="btn primary" href="#workers">Book a Worker</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Filters -->
+    <section class="panel" id="workers">
+      <h2>Available Workers</h2>
+      <p class="muted">Search by name or filter by skill. Click <b>Book</b> to confirm hours and cost.</p>
+
+      <div class="filters">
+        <input id="search" type="text" placeholder="Search worker name (e.g., Ramesh)" />
+        <select id="skill">
+          <option value="all">All Skills</option>
+        </select>
+        <select id="sort">
+          <option value="default">Sort: Default</option>
+          <option value="rate_low">Hourly Rate: Low → High</option>
+          <option value="rate_high">Hourly Rate: High → Low</option>
+          <option value="rating_high">Rating: High → Low</option>
+        </select>
+      </div>
+
+      <div id="workerGrid" class="grid"></div>
+    </section>
+
+    <!-- Booking -->
+    <section class="panel">
+      <h2>Booking Details</h2>
+      <p class="muted">Select a worker to start booking.</p>
+
+      <div class="booking">
+        <div class="selected">
+          <h3>Selected Worker</h3>
+          <div id="selectedCard" class="selectedCard">
+            <p class="muted">No worker selected.</p>
+          </div>
+        </div>
+
+        <form id="bookingForm" class="form">
+          <h3>Confirm Booking</h3>
+
+          <label>
+            Your Name
+            <input id="customerName" type="text" placeholder="Your full name" required />
+          </label>
+
+          <label>
+            Phone Number
+            <input id="customerPhone" type="tel" placeholder="e.g., 574-xxx-xxxx" required />
+          </label>
+
+          <label>
+            Address / City
+            <input id="customerAddress" type="text" placeholder="South Bend, IN" required />
+          </label>
+
+          <label>
+            Date
+            <input id="date" type="date" required />
+          </label>
+
+          <label>
+            Hours Needed
+            <input id="hours" type="number" min="1" max="12" value="2" required />
+          </label>
+
+          <div class="costBox">
+            <div>
+              <div class="muted small">Estimated Cost</div>
+              <div id="cost" class="cost">$0</div>
+              <div class="muted small" id="rateLine">Rate: -</div>
+            </div>
+            <button id="confirmBtn" class="btn primary" type="submit" disabled>
+              Confirm Booking
+            </button>
+          </div>
+
+          <p class="muted small note">
+            This is a demo project: bookings are saved in your browser (localStorage).
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Bookings List -->
+    <section class="panel">
+      <h2>My Bookings</h2>
+      <p class="muted">Saved bookings on this device.</p>
+      <div id="bookingList" class="list"></div>
+    </section>
+
+    <footer class="foot">
+      <p>© <span id="year"></span> Hourly Labor Booking • Demo by Sai Gopinadh Devineni</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
